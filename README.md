@@ -10,6 +10,7 @@ This is a light weight mod for Valheim that allows the user to adjust the format
 * Adjust Console Width
 * Adjust Console Height
 * Adjust Console Background Color and Transparency
+* Adjust Console Buffer and Visible Lines Shown
 
 ### Current Patch Notes
 [Github Patchnotes](https://github.com/Vapok/ConsoleBuddy/blob/main/PATCHNOTES.md)

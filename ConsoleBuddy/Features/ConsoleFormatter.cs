@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using BepInEx.Configuration;
 using ConsoleBuddy.Configuration;
 using HarmonyLib;
@@ -24,6 +26,8 @@ public class ConsoleFormatter
     public static ConfigEntry<int> ConsoleBackgroundOffsetMaxXPos { get; private set; }
     public static ConfigEntry<int> ConsoleBackgroundOffsetMinYPos { get; private set; }
     public static ConfigEntry<int> ConsoleBackgroundOffsetMinXPos { get; private set; }
+    public static ConfigEntry<int> ConsoleBufferLimit { get; private set; }
+    public static ConfigEntry<int> ConsoleVisibleBufferLimit { get; private set; }
     private static TextMeshProUGUI _textComponent;
     private static RectTransform _rect;
     private static Image _image;
@@ -66,6 +70,17 @@ public class ConsoleFormatter
                 null,
                 new ConfigurationManagerAttributes { Order = 4 }));
 
+        ConsoleBufferLimit = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Buffer Limit", 3000,
+            new ConfigDescription("Adjusts Console maximum buffer limit",
+                null,
+                new ConfigurationManagerAttributes { Order = 5 }));
+
+        ConsoleVisibleBufferLimit = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Visible Lines Shown (Requires Restart)", 300,
+            new ConfigDescription("Adjusts Console Visible Buffer Lines Shown - *Requires Game Restart*",
+                null,
+                new ConfigurationManagerAttributes { Order = 5 }));
+
+
         ConsoleBackgroundOffsetMinXPos = ConfigSyncBase.UnsyncedConfig("Console Positioning", "Console Background Left Offset", 0,
             new ConfigDescription("Adjusts Console Font Size",
                 new AcceptableValueRange<int>(0,5000),
@@ -95,6 +110,25 @@ public class ConsoleFormatter
         _configuredFont = TMP_FontAsset.CreateFontAsset(fontType);
     }
 
+    public static void AddString(Terminal instance, string text)
+    {
+        while (instance.m_maxVisibleBufferLength > 1)
+        {
+            try
+            {
+                instance.m_chatBuffer.Add(text);
+                while (instance.m_chatBuffer.Count > ConsoleBufferLimit.Value)
+                    instance.m_chatBuffer.RemoveAt(0);
+                instance.UpdateChat();
+                break;
+            }
+            catch (Exception)
+            {
+                --instance.m_maxVisibleBufferLength;
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(Console), nameof(Console.Awake))]
     public static class ConsoleAwakePatch
     {
@@ -116,29 +150,32 @@ public class ConsoleFormatter
                                 TextGameObject = textTransform.gameObject;
                             return;
                         }
-                            
+
                         GetChildren(childTransform);
                     }
                 }
             }
-            
+
             if (__instance.transform.childCount > 0)
             {
                 GetChildren(__instance.transform);
             }
             
+            __instance.m_terminalInstance.m_maxVisibleBufferLength = ConsoleVisibleBufferLimit.Value;
+
             _textComponent = TextGameObject.GetComponent<TextMeshProUGUI>();
             _rect = ImageGameObject.GetComponent<RectTransform>();
             _image = ImageGameObject.GetComponent<Image>();
             _defaultFont = _textComponent.font;
-            
+
             var fontIndex = FontNameList.IndexOf(ConsoleFontName.Value);
             if (fontIndex == 0)
             {
                 _configuredFont = _defaultFont;
                 return;
             }
-            var fontType = new Font(Font.GetPathsToOSFonts()[fontIndex-1]);
+
+            var fontType = new Font(Font.GetPathsToOSFonts()[fontIndex - 1]);
             _configuredFont = TMP_FontAsset.CreateFontAsset(fontType);
 
 
@@ -152,16 +189,40 @@ public class ConsoleFormatter
             {
                 if (TextGameObject == null)
                     return;
-                
+
                 _rect.offsetMax = new Vector2(ConsoleBackgroundOffsetMaxXPos.Value, _rect.offsetMax.y);
-                _rect.offsetMin = new Vector2(ConsoleBackgroundOffsetMinXPos.Value, ConsoleBackgroundOffsetMinYPos.Value);
+                _rect.offsetMin = new Vector2(ConsoleBackgroundOffsetMinXPos.Value,
+                    ConsoleBackgroundOffsetMinYPos.Value);
                 _image.color = ConsoleBackGroundColor.Value;
-                _textComponent.font = _configuredFont;    
+                _textComponent.font = _configuredFont;
                 _textComponent.fontSize = ConsoleFontSize.Value;
                 _textComponent.color = ConsoleFontColor.Value;
             }
 
         }
 
+        [HarmonyPatch(typeof(Terminal), nameof(Terminal.AddString), new []{typeof(string)})]
+        static class TerminalAddStringPatch
+        {
+            public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                var instrs = new List<CodeInstruction>();
+
+                var counter = 0;
+
+                CodeInstruction LogMessage(CodeInstruction instruction)
+                {
+                    ConsoleBuddy.Log.Debug($"IL_{counter}: Opcode: {instruction.opcode} Operand: {instruction.operand}");
+                    return instruction;
+                }
+                
+                instrs.Add(LogMessage(new CodeInstruction(OpCodes.Ldarg_0)));
+                instrs.Add(LogMessage(new CodeInstruction(OpCodes.Ldarg_1)));
+                instrs.Add(LogMessage(new CodeInstruction(OpCodes.Call, AccessTools.DeclaredMethod(typeof(ConsoleFormatter),nameof(ConsoleFormatter.AddString)))));
+                instrs.Add(LogMessage(new CodeInstruction(OpCodes.Ret)));
+
+                return instrs;
+            }
+        }
     }
 }

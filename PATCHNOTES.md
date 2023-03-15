@@ -1,4 +1,7 @@
 # Console Buddy Patchnotes
+### 1.0.3 - Additional Features
+* Adds settings for adjusting Console Buffer Limit and Visible Lines Shown
+
 ### 1.0.2 - Additional Features
 * Fixed Font Saving Incorrectly.
 
