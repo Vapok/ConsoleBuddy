@@ -1,4 +1,7 @@
 # Console Buddy Patchnotes
+### 1.0.4 - Valheim 0.216.7 Updates
+* Updates for Valheim 0.216.7
+
 ### 1.0.3 - Additional Features
 * Adds settings for adjusting Console Buffer Limit and Visible Lines Shown
 
