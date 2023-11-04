@@ -19,7 +19,7 @@ namespace ConsoleBuddy
         //Module Constants
         private const string _pluginId = "vapok.mods.consolebuddy";
         private const string _displayName = "Console Buddy";
-        private const string _version = "1.0.6";
+        private const string _version = "1.0.7";
         
         //Interface Properties
         public string PluginId => _pluginId;
@@ -84,7 +84,6 @@ namespace ConsoleBuddy
         private void OnDestroy()
         {
             _instance = null;
-            _harmony?.UnpatchSelf();
         }
 
         public class Waiting

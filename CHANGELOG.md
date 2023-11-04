@@ -1,4 +1,7 @@
 # Console Buddy Patchnotes
+### 1.0.7 - Valheim 0.217.28 Updates
+* Updates for Valheim 0.217.28
+
 ### 1.0.6 - Valheim 0.217.24 Updates
 * Updates for Valheim 0.217.24
 
