@@ -9,7 +9,7 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>ConsoleBuddy</RootNamespace>
         <AssemblyName>ConsoleBuddy</AssemblyName>
-        <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
@@ -36,28 +36,25 @@
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="0Harmony">
-          <HintPath>..\..\References\BepInEx\5.4.2201\BepInEx\core\0Harmony.dll</HintPath>
+          <HintPath>..\..\References\BepInEx\5.4.2333\BepInEx\core\0Harmony.dll</HintPath>
         </Reference>
         <Reference Include="assembly_guiutils">
-          <HintPath>..\..\References\Valheim\0.217.28\assembly_guiutils_publicized.dll</HintPath>
+          <HintPath>..\..\References\Valheim\0.221.4\assembly_guiutils_publicized.dll</HintPath>
         </Reference>
         <Reference Include="assembly_postprocessing">
-          <HintPath>..\..\References\Valheim\0.217.28\assembly_postprocessing_publicized.dll</HintPath>
+          <HintPath>..\..\References\Valheim\0.221.4\assembly_postprocessing_publicized.dll</HintPath>
         </Reference>
         <Reference Include="assembly_utils">
-          <HintPath>..\..\References\Valheim\0.217.28\assembly_utils_publicized.dll</HintPath>
+          <HintPath>..\..\References\Valheim\0.221.4\assembly_utils_publicized.dll</HintPath>
         </Reference>
         <Reference Include="assembly_valheim">
-          <HintPath>..\..\References\Valheim\0.217.28\assembly_valheim_publicized.dll</HintPath>
+          <HintPath>..\..\References\Valheim\0.221.4\assembly_valheim_publicized.dll</HintPath>
         </Reference>
         <Reference Include="BepInEx">
-          <HintPath>..\..\References\BepInEx\5.4.2201\BepInEx\core\BepInEx.dll</HintPath>
+          <HintPath>..\..\References\BepInEx\5.4.2333\BepInEx\core\BepInEx.dll</HintPath>
         </Reference>
         <Reference Include="BepInEx.Harmony">
-          <HintPath>..\..\References\BepInEx\5.4.2201\BepInEx\core\BepInEx.Harmony.dll</HintPath>
-        </Reference>
-        <Reference Include="ServerSync">
-          <HintPath>..\..\References\ServerSync\ServerSync.dll</HintPath>
+          <HintPath>..\..\References\BepInEx\5.4.2333\BepInEx\core\BepInEx.Harmony.dll</HintPath>
         </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
@@ -65,28 +62,28 @@
         <Reference Include="System.Net.Http" />
         <Reference Include="System.Xml" />
         <Reference Include="Unity.TextMeshPro">
-          <HintPath>..\..\References\BepInEx\5.4.2201\unstripped_corlib\Unity.TextMeshPro.dll</HintPath>
+          <HintPath>..\..\References\Valheim\0.221.4\Managed\Unity.TextMeshPro.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine">
-          <HintPath>..\..\References\BepInEx\5.4.2201\unstripped_corlib\UnityEngine.dll</HintPath>
+          <HintPath>..\..\References\Valheim\0.221.4\Managed\UnityEngine.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.AnimationModule">
-          <HintPath>..\..\References\BepInEx\5.4.2201\unstripped_corlib\UnityEngine.AnimationModule.dll</HintPath>
+          <HintPath>..\..\References\Valheim\0.221.4\Managed\UnityEngine.AnimationModule.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.AssetBundleModule">
-          <HintPath>..\..\References\BepInEx\5.4.2201\unstripped_corlib\UnityEngine.AssetBundleModule.dll</HintPath>
+          <HintPath>..\..\References\Valheim\0.221.4\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.CoreModule">
-          <HintPath>..\..\References\BepInEx\5.4.2201\unstripped_corlib\UnityEngine.CoreModule.dll</HintPath>
+          <HintPath>..\..\References\Valheim\0.221.4\Managed\UnityEngine.CoreModule.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.TextRenderingModule">
-          <HintPath>..\..\References\BepInEx\5.4.2201\unstripped_corlib\UnityEngine.TextRenderingModule.dll</HintPath>
+          <HintPath>..\..\References\Valheim\0.221.4\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.UI">
-          <HintPath>..\..\References\BepInEx\5.4.2201\unstripped_corlib\UnityEngine.UI.dll</HintPath>
+          <HintPath>..\..\References\Valheim\0.221.4\Managed\UnityEngine.UI.dll</HintPath>
         </Reference>
-        <Reference Include="Vapok.Valheim.Common, Version=0.217.28.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\Vapok.Valheim.Common.1.21728.2\lib\net472\Vapok.Valheim.Common.dll</HintPath>
+        <Reference Include="Vapok.Valheim.Common, Version=2.0.2214.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\Vapok.Valheim.Common.2.3.2214\lib\net48\Vapok.Valheim.Common.dll</HintPath>
         </Reference>
         <Reference Include="YamlDotNet, Version=12.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
           <HintPath>..\packages\YamlDotNet.12.3.1\lib\net45\YamlDotNet.dll</HintPath>

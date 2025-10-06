@@ -1,4 +1,7 @@
 # Console Buddy Patchnotes
+### 1.1.0 - Removes ServerSync, Adds JotunnVL   
+* Updates for Valheim 0.221.4
+
 ### 1.0.7 - Valheim 0.217.28 Updates
 * Updates for Valheim 0.217.28
 

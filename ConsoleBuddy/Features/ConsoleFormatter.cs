@@ -19,15 +19,15 @@ public class ConsoleFormatter
     public static List<string> FontNameList;
     private static GameObject TextGameObject = null;
     private static GameObject ImageGameObject = null;
-    public static ConfigEntry<int> ConsoleFontSize { get; private set; }
-    public static ConfigEntry<Color> ConsoleFontColor { get; private set; }
-    public static ConfigEntry<Color> ConsoleBackGroundColor { get; private set; }
-    public static ConfigEntry<string> ConsoleFontName { get; private set; }
-    public static ConfigEntry<int> ConsoleBackgroundOffsetMaxXPos { get; private set; }
-    public static ConfigEntry<int> ConsoleBackgroundOffsetMinYPos { get; private set; }
-    public static ConfigEntry<int> ConsoleBackgroundOffsetMinXPos { get; private set; }
-    public static ConfigEntry<int> ConsoleBufferLimit { get; private set; }
-    public static ConfigEntry<int> ConsoleVisibleBufferLimit { get; private set; }
+    public static ConfigEntry<int> ConsoleFontSize;
+    public static ConfigEntry<Color> ConsoleFontColor;
+    public static ConfigEntry<Color> ConsoleBackGroundColor;
+    public static ConfigEntry<string> ConsoleFontName;
+    public static ConfigEntry<int> ConsoleBackgroundOffsetMaxXPos;
+    public static ConfigEntry<int> ConsoleBackgroundOffsetMinYPos;
+    public static ConfigEntry<int> ConsoleBackgroundOffsetMinXPos;
+    public static ConfigEntry<int> ConsoleBufferLimit;
+    public static ConfigEntry<int> ConsoleVisibleBufferLimit;
     private static TextMeshProUGUI _textComponent;
     private static RectTransform _rect;
     private static Image _image;
@@ -49,52 +49,52 @@ public class ConsoleFormatter
         ConsoleFontSize = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Font Size", 20,
             new ConfigDescription("Adjusts Console Font Size",
                 new AcceptableValueRange<int>(5,100),
-                new ConfigurationManagerAttributes { Order = 1 }));
+                new ConfigurationManagerAttributes { Order = 1 }),ref ConsoleFontSize);
 
         ConsoleFontColor = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Font Color", Color.grey,
             new ConfigDescription("Adjusts Console Font Size",
                 null,
-                new ConfigurationManagerAttributes { Order = 2 }));
+                new ConfigurationManagerAttributes { Order = 2 }),ref ConsoleFontColor);
 
         var acceptableValues = new AcceptableValueList<string>(FontNameList.ToArray());
         
         ConsoleFontName = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Font Name", "Default Console Font",
             new ConfigDescription("Adjusts Console Font Size",
                 acceptableValues,
-                new ConfigurationManagerAttributes { Order = 3 }));
+                new ConfigurationManagerAttributes { Order = 3 }),ref ConsoleFontName);
         
         ConsoleFontName.SettingChanged += (_, _) => UpdateFont();
 
         ConsoleBackGroundColor = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Console Background Color", new Color(0,0,0,134/255.0F),
             new ConfigDescription("Adjusts Console Font Size",
                 null,
-                new ConfigurationManagerAttributes { Order = 4 }));
+                new ConfigurationManagerAttributes { Order = 4 }),ref ConsoleBackGroundColor);
 
         ConsoleBufferLimit = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Buffer Limit", 3000,
             new ConfigDescription("Adjusts Console maximum buffer limit",
                 null,
-                new ConfigurationManagerAttributes { Order = 5 }));
+                new ConfigurationManagerAttributes { Order = 5 }),ref ConsoleBufferLimit);
 
         ConsoleVisibleBufferLimit = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Visible Lines Shown (Requires Restart)", 300,
             new ConfigDescription("Adjusts Console Visible Buffer Lines Shown - *Requires Game Restart*",
                 null,
-                new ConfigurationManagerAttributes { Order = 5 }));
+                new ConfigurationManagerAttributes { Order = 5 }),ref ConsoleVisibleBufferLimit);
 
 
         ConsoleBackgroundOffsetMinXPos = ConfigSyncBase.UnsyncedConfig("Console Positioning", "Console Background Left Offset", 0,
             new ConfigDescription("Adjusts Console Font Size",
                 new AcceptableValueRange<int>(0,5000),
-                new ConfigurationManagerAttributes { Order = 1 }));
+                new ConfigurationManagerAttributes { Order = 1 }),ref ConsoleBackgroundOffsetMinXPos);
 
         ConsoleBackgroundOffsetMaxXPos = ConfigSyncBase.UnsyncedConfig("Console Positioning", "Console Background Right Offset", 0,
             new ConfigDescription("Adjusts Console Font Size",
                 new AcceptableValueRange<int>(-5000,0),
-                new ConfigurationManagerAttributes { Order = 2 }));
+                new ConfigurationManagerAttributes { Order = 2 }),ref ConsoleBackgroundOffsetMaxXPos);
 
         ConsoleBackgroundOffsetMinYPos = ConfigSyncBase.UnsyncedConfig("Console Positioning", "Console Background Height", 0,
             new ConfigDescription("Adjusts Console Font Size",
                 new AcceptableValueRange<int>(-500,500),
-                new ConfigurationManagerAttributes { Order = 3 }));
+                new ConfigurationManagerAttributes { Order = 3 }),ref ConsoleBackgroundOffsetMinYPos);
     }
 
     private static void UpdateFont()
