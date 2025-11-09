@@ -46,52 +46,52 @@ public class ConsoleFormatter
 
     private static void RegisterConfigurationFile()
     {
-        ConsoleFontSize = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Font Size", 20,
+        ConfigSyncBase.UnsyncedConfig("Console Appearance", "Font Size", 20,
             new ConfigDescription("Adjusts Console Font Size",
                 new AcceptableValueRange<int>(5,100),
                 new ConfigurationManagerAttributes { Order = 1 }),ref ConsoleFontSize);
 
-        ConsoleFontColor = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Font Color", Color.grey,
+        ConfigSyncBase.UnsyncedConfig("Console Appearance", "Font Color", Color.grey,
             new ConfigDescription("Adjusts Console Font Size",
                 null,
                 new ConfigurationManagerAttributes { Order = 2 }),ref ConsoleFontColor);
 
         var acceptableValues = new AcceptableValueList<string>(FontNameList.ToArray());
         
-        ConsoleFontName = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Font Name", "Default Console Font",
+        ConfigSyncBase.UnsyncedConfig("Console Appearance", "Font Name", "Default Console Font",
             new ConfigDescription("Adjusts Console Font Size",
                 acceptableValues,
                 new ConfigurationManagerAttributes { Order = 3 }),ref ConsoleFontName);
         
         ConsoleFontName.SettingChanged += (_, _) => UpdateFont();
 
-        ConsoleBackGroundColor = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Console Background Color", new Color(0,0,0,134/255.0F),
+        ConfigSyncBase.UnsyncedConfig("Console Appearance", "Console Background Color", new Color(0,0,0,134/255.0F),
             new ConfigDescription("Adjusts Console Font Size",
                 null,
                 new ConfigurationManagerAttributes { Order = 4 }),ref ConsoleBackGroundColor);
 
-        ConsoleBufferLimit = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Buffer Limit", 3000,
+        ConfigSyncBase.UnsyncedConfig("Console Appearance", "Buffer Limit", 3000,
             new ConfigDescription("Adjusts Console maximum buffer limit",
                 null,
                 new ConfigurationManagerAttributes { Order = 5 }),ref ConsoleBufferLimit);
 
-        ConsoleVisibleBufferLimit = ConfigSyncBase.UnsyncedConfig("Console Appearance", "Visible Lines Shown (Requires Restart)", 300,
+        ConfigSyncBase.UnsyncedConfig("Console Appearance", "Visible Lines Shown (Requires Restart)", 300,
             new ConfigDescription("Adjusts Console Visible Buffer Lines Shown - *Requires Game Restart*",
                 null,
                 new ConfigurationManagerAttributes { Order = 5 }),ref ConsoleVisibleBufferLimit);
 
 
-        ConsoleBackgroundOffsetMinXPos = ConfigSyncBase.UnsyncedConfig("Console Positioning", "Console Background Left Offset", 0,
+        ConfigSyncBase.UnsyncedConfig("Console Positioning", "Console Background Left Offset", 0,
             new ConfigDescription("Adjusts Console Font Size",
                 new AcceptableValueRange<int>(0,5000),
                 new ConfigurationManagerAttributes { Order = 1 }),ref ConsoleBackgroundOffsetMinXPos);
 
-        ConsoleBackgroundOffsetMaxXPos = ConfigSyncBase.UnsyncedConfig("Console Positioning", "Console Background Right Offset", 0,
+        ConfigSyncBase.UnsyncedConfig("Console Positioning", "Console Background Right Offset", 0,
             new ConfigDescription("Adjusts Console Font Size",
                 new AcceptableValueRange<int>(-5000,0),
                 new ConfigurationManagerAttributes { Order = 2 }),ref ConsoleBackgroundOffsetMaxXPos);
 
-        ConsoleBackgroundOffsetMinYPos = ConfigSyncBase.UnsyncedConfig("Console Positioning", "Console Background Height", 0,
+        ConfigSyncBase.UnsyncedConfig("Console Positioning", "Console Background Height", 0,
             new ConfigDescription("Adjusts Console Font Size",
                 new AcceptableValueRange<int>(-500,500),
                 new ConfigurationManagerAttributes { Order = 3 }),ref ConsoleBackgroundOffsetMinYPos);
