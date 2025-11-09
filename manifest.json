@@ -1,6 +1,6 @@
 {
   "name": "ConsoleBuddy",
-  "version_number": "1.1.1",
+  "version_number": "1.1.2",
   "website_url": "https://github.com/Vapok/ConsoleBuddy",
   "description": "A simple Valheim mod that allows you to adjust the look and feel of the in-game Console",
   "dependencies": [
