@@ -26,6 +26,7 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <NoWarn>MSB3245;MSB3243</NoWarn>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,7 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <NoWarn>MSB3245;MSB3243</NoWarn>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="0Harmony">
@@ -91,11 +93,11 @@
         <Reference Include="UnityEngine.UI">
           <HintPath>..\..\References\Valheim\0.221.4\Managed\UnityEngine.UI.dll</HintPath>
         </Reference>
-        <Reference Include="Vapok.Valheim.Common, Version=2.0.2214.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\Vapok.Valheim.Common.2.4.2214\lib\net48\Vapok.Valheim.Common.dll</HintPath>
+        <Reference Include="Vapok.Valheim.Common, Version=2.11.2214.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\Vapok.Valheim.Common.2.11.2214\lib\net48\Vapok.Valheim.Common.dll</HintPath>
         </Reference>
-        <Reference Include="YamlDotNet, Version=12.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
-          <HintPath>..\packages\YamlDotNet.12.3.1\lib\net45\YamlDotNet.dll</HintPath>
+        <Reference Include="YamlDotNet, Version=16.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
+          <HintPath>..\packages\YamlDotNet.16.3.0\lib\net47\YamlDotNet.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>
@@ -111,6 +113,7 @@
     </ItemGroup>
     <ItemGroup>
       <EmbeddedResource Include="Translations\English.json" />
+      <Content Include="ILRepack.Config.props" />
       <Content Include="ILRepack.targets" />
     </ItemGroup>
     <ItemGroup>
@@ -129,14 +132,14 @@
         <Exec Command="xcopy &quot;M:\Code\VapokModBase\$(ProjectName)\README.md&quot; &quot;M:\Code\VapokModBase\Releases\$(ProjectName)-Vapok\&quot; /q /y /i" />
         <Exec Command="xcopy &quot;M:\Code\VapokModBase\$(ProjectName)\icon.png&quot; &quot;M:\Code\VapokModBase\Releases\$(ProjectName)-Vapok\&quot; /q /y /i" />
     </Target>
-    <Import Project="..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets" Condition="Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" />
     <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
       <PropertyGroup>
         <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
       </PropertyGroup>
-      <Error Condition="!Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.Lib.MSBuild.Task.2.0.18.2\build\ILRepack.Lib.MSBuild.Task.targets'))" />
       <Error Condition="!Exists('..\packages\JotunnLib.2.27.0\build\JotunnLib.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\JotunnLib.2.27.0\build\JotunnLib.props'))" />
+      <Error Condition="!Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.44.1\build\ILRepack.Lib.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.Lib.MSBuild.Task.2.0.44.1\build\ILRepack.Lib.MSBuild.Task.targets'))" />
     </Target>
+    <Import Project="..\packages\ILRepack.Lib.MSBuild.Task.2.0.44.1\build\ILRepack.Lib.MSBuild.Task.targets" Condition="Exists('..\packages\ILRepack.Lib.MSBuild.Task.2.0.44.1\build\ILRepack.Lib.MSBuild.Task.targets')" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">

@@ -1,8 +1,11 @@
 # Console Buddy Patchnotes
 
+## 1.1.2 - Updating Dependencies
+* Updating to latest version of dependencies.
+
 ## 1.1.1 - Fixing Dedicated Server Config Syncing
 * A regression issue was introduced when switching to Jotunn preventing servers from dictating configs to clients.
-    * This has been resolved.
+  * This has been resolved.
 * Appropriately added the BepInDependency Flags for graceful mod exit if missing dependencies.
 
 ## 1.1.0 - Removes ServerSync, Adds JotunnVL   
