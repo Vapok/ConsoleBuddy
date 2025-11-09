@@ -6,10 +6,12 @@ using HarmonyLib;
 using JetBrains.Annotations;
 using ConsoleBuddy.Configuration;
 using ConsoleBuddy.Features;
+using Jotunn.Managers;
 using Vapok.Common.Abstractions;
 using Vapok.Common.Managers;
 using Vapok.Common.Managers.Configuration;
 using Vapok.Common.Managers.LocalizationManager;
+using Vapok.Common.Tools;
 
 namespace ConsoleBuddy
 {
@@ -22,7 +24,7 @@ namespace ConsoleBuddy
         //Module Constants
         private const string _pluginId = "vapok.mods.consolebuddy";
         private const string _displayName = "Console Buddy";
-        private const string _version = "1.1.1";
+        private const string _version = "1.1.2";
         
         //Interface Properties
         public string PluginId => _pluginId;
@@ -51,14 +53,17 @@ namespace ConsoleBuddy
             //Waiting For Startup
             Waiter = new Waiting();
             
-            //Initialize Managers
-            Localizer.Init();
-
-            //Register Configuration Settings
-            _config = new ConfigRegistry(_instance);
+            //Jotunn Localization
+            var localization = LocalizationManager.Instance.GetLocalization();
 
             //Register Logger
             LogManager.Init(PluginId,out _log);
+            
+            //Initialize Managers
+            Initializer.LoadManagers(localization);
+
+            //Register Configuration Settings
+            _config = new ConfigRegistry(_instance);
 
             Localizer.Waiter.StatusChanged += InitializeModule;
             
