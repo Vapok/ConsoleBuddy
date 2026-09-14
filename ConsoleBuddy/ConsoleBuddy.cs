@@ -24,7 +24,7 @@ namespace ConsoleBuddy
         //Module Constants
         private const string _pluginId = "vapok.mods.consolebuddy";
         private const string _displayName = "Console Buddy";
-        private const string _version = "1.1.2";
+        private const string _version = "2.0.0";
         
         //Interface Properties
         public string PluginId => _pluginId;
@@ -66,6 +66,7 @@ namespace ConsoleBuddy
             _config = new ConfigRegistry(_instance);
 
             Localizer.Waiter.StatusChanged += InitializeModule;
+            Waiter.StatusChanged += InitializeModule;
             
             //Register Features
             ConsoleFormatter.FeatureInitialized = true;
