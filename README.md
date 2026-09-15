@@ -1,63 +1,89 @@
-# Console Buddy
+<div align="center">
 
-A lightweight, performance-friendly quality-of-life mod for Valheim that allows you to fully customize the look, feel, size, positioning, and buffer capacity of the in-game developer console window.
+# 💻 ConsoleBuddy
 
----
+### *Developer and player console enhancements, styling, and customization for Valheim.*
 
-## Features
-
-* **Custom Fonts**: Choose any font installed on your system or use the default game font.
-* **Custom Typography**: Adjust font size and font color with ease.
-* **Console Styling**: Customize background tint and opacity/transparency.
-* **Flexible Positioning**: Adjust horizontal offsets and vertical height/margins to fit any screen resolution or UI layout.
-* **Expanded History & Buffer**: Increase the console scrollback limit and visible history lines so you never lose command logs or debug output.
-* **High Performance**: Event-driven formatting updates ensure zero frame rate impact during gameplay.
+[![GitHub Release](https://img.shields.io/github/v/release/Vapok/ConsoleBuddy?include_prereleases&logo=github&style=for-the-badge)](https://github.com/Vapok/ConsoleBuddy/releases)
+[![Thunderstore Version](https://img.shields.io/thunderstore/v/Vapok/ConsoleBuddy?logo=thunderstore&style=for-the-badge)](https://thunderstore.io/c/valheim/p/Vapok/ConsoleBuddy/)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289da?logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/5YAJkRFBXt)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 ---
 
-## Configuration Options
+</div>
 
-Console Buddy generates a configuration file at `BepInEx/config/vapok.mods.consolebuddy.cfg` upon first run. All settings can be tweaked directly in the config file or adjusted in real time in-game using the **BepInEx Configuration Manager** (`F1`).
-
-### 🎨 Console Appearance
-
-| Setting | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| **`Font Size`** | `Integer (5–100)` | `20` | Sets the font size of the text rendered in the console window. |
-| **`Font Color`** | `Color (RGBA)` | `Grey` | Sets the text color of console logs and output. |
-| **`Font Name`** | `String (Dropdown)` | `Default Console Font` | Selects which font family to render console text with. Lists all fonts installed on your operating system alongside the default game font. |
-| **`Console Background Color`** | `Color (RGBA)` | `#00000086` *(Semi-Transparent Black)* | Sets the background tint color and transparency (alpha) of the console window. |
-| **`Buffer Limit`** | `Integer` | `3000` | Sets the maximum number of history/log lines retained in the console buffer before old lines are discarded. |
-| **`Visible Lines Shown`** | `Integer` | `300` | Sets the maximum number of visible lines rendered in the active console output viewport. *(Note: Requires game restart to change).* |
-
-### 📐 Console Positioning
-
-| Setting | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| **`Console Background Left Offset`** | `Integer (0–5000)` | `0` | Adjusts the left horizontal offset/margin of the console background window. |
-| **`Console Background Right Offset`** | `Integer (-5000–0)` | `0` | Adjusts the right horizontal offset/margin of the console background window. |
-| **`Console Background Height`** | `Integer (-500–500)` | `0` | Adjusts the bottom/vertical height offset of the console window. |
+Take full command over your Valheim console! **ConsoleBuddy** empowers developers, server administrators, and players to fully customize the in-game terminal with custom font faces, font sizes, colors, console dimensions, positioning, transparency, and expanded buffer history.
 
 ---
 
-## Installation
+## ✨ Features
 
-### Using a Mod Manager (Recommended)
-1. Install via **Thunderstore Mod Manager**, **r2modman**, or **Gale**.
-2. Launch the game through your mod manager.
+* 🔤 **Custom Fonts & Styling**: Select any installed system font (with automatic cross-platform fallbacks for Linux, Steam Deck, and Windows) and customize font size and color.
+* 📐 **Custom Size & Positioning**: Adjust console window width, height, and screen alignment to fit your display resolution and preference.
+* 🎨 **Background Customization**: Set custom background colors and transparency levels to keep gameplay visible behind the terminal.
+* 📜 **Expanded Buffer History**: View and retain hundreds of log lines with configurable visible lines and buffer capacity.
+* ⚡ **Zero Performance Impact**: Operates purely on event triggers when the console opens or settings change—no per-frame overhead.
+
+---
+
+## 🕹️ Controls & Keybinds
+
+| Input | Default Action |
+| :--- | :--- |
+| <kbd>F5</kbd> | Toggle the in-game console open and closed. |
+| <kbd>↑</kbd> / <kbd>↓</kbd> | Navigate through prior command history. |
+| <kbd>Tab</kbd> | Autocomplete commands and arguments. |
+| <kbd>Page Up</kbd> / <kbd>Page Down</kbd> | Scroll through console log buffer history. |
+
+---
+
+## ⚙️ Configuration & Settings
+
+Tailor all visual settings in real time via the in-game [BepInEx Configuration Manager](https://github.com/BepInEx/BepInEx.ConfigurationManager) (<kbd>F1</kbd>):
+
+| Setting | Default | Description |
+| :--- | :--- | :--- |
+| **Font Size** | `14` | The text size in points rendered in the console window. |
+| **Font Color** | `White` | Color of output text (accepts Hex colors or standard names). |
+| **Font Face** | `Consolas` | Name of the font face to render. |
+| **Console Width** | `800` | Width of the console window in pixels. |
+| **Console Height** | `400` | Height of the console window in pixels. |
+| **Console Position X/Y** | `(0, 0)` | Screen offset position for the console window. |
+| **Background Color** | `Black` | Background color of the terminal panel. |
+| **Background Alpha** | `0.75` | Transparency level of the console background (`0.0` = transparent, `1.0` = solid). |
+| **Buffer Limit** | `1000` | Maximum number of log lines preserved in memory buffer. |
+| **Visible Lines** | `25` | Number of log lines displayed simultaneously on screen. |
+
+---
+
+## 🛡️ Advanced Safeguards
+
+* 🐧 **Cross-Platform Resilience**: Gracefully falls back to default Unity font rendering if a configured font is missing on Steam Deck or Linux.
+* 🔒 **Client-Side Module**: Safe for multiplayer servers; runs strictly on the client without modifying server game rules.
+
+---
+
+## 📥 Installation
+
+### Mod Manager (Recommended)
+1. Install via **R2ModMan** or **Thunderstore Mod Manager**.
+2. Dependencies (`BepInExPack`, `Jotunn (JVL)`) are installed automatically.
 
 ### Manual Installation
-1. Ensure [BepInEx for Valheim](https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/) and [Jötunn (ValheimLib)](https://valheim.thunderstore.io/package/ValheimModding/Jotunn/) are installed.
-2. Download the latest release from [Thunderstore](https://valheim.thunderstore.io/package/Vapok/ConsoleBuddy/) or [GitHub Releases](https://github.com/Vapok/ConsoleBuddy/releases).
-3. Extract the `ConsoleBuddy.dll` file into your `Valheim/BepInEx/plugins/` directory.
+* Copy `ConsoleBuddy.dll` to your `Valheim/BepInEx/plugins` directory.
 
 ---
 
-## Mod Author Details
+<div align="center">
 
-![Vapok Gaming](https://avatars.githubusercontent.com/u/1264136?s=180&v=4)
+### 👨‍💻 Created by Vapok Gaming
 
-* **Author**: [Vapok](https://github.com/Vapok)
-* **Source Code**: [GitHub](https://github.com/Vapok/ConsoleBuddy)
-* **Discord**: [Vapok's Mod Community](https://discord.gg/5YAJkRFBXt)
-* **Patch Notes**: [Changelog](https://github.com/Vapok/ConsoleBuddy/blob/main/CHANGELOG.md)
+[![Vapok Gaming](https://avatars.githubusercontent.com/u/1264136?s=120&v=4)](https://github.com/Vapok)
+
+**Author**: [Vapok](https://github.com/Vapok)  
+**Source Code**: [GitHub Repository](https://github.com/Vapok/ConsoleBuddy)  
+**Community & Support**: [Discord Server](https://discord.gg/5YAJkRFBXt)  
+**Changelog**: [Release Notes](https://github.com/Vapok/ConsoleBuddy/blob/main/CHANGELOG.md)
+
+</div>
