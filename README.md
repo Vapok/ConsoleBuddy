@@ -64,6 +64,18 @@ Tailor all visual settings in real time via the in-game [BepInEx Configuration M
 
 ---
 
+## 🌐 Available Translations
+
+<div align="center">
+
+🇺🇸 **English** (Default)
+
+</div>
+
+*Want to help translate Console Buddy? Community translations are welcome! Please submit a PR on [GitHub](https://github.com/Vapok/ConsoleBuddy) or stop by our [Discord](https://discord.gg/5YAJkRFBXt).*
+
+---
+
 ## 📥 Installation
 
 ### Mod Manager (Recommended)
