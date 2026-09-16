@@ -23,7 +23,7 @@ Take full command over your Valheim console! **ConsoleBuddy** empowers developer
 
 <br>
 
-[![Survival Servers](https://raw.githubusercontent.com/Vapok/ConsoleBuddy/refs/heads/main/images/survivalservers_banner.png)](https://www.survivalservers.com/services/game_servers/valheim/?ref=vapok)
+[![Survival Servers](https://raw.githubusercontent.com/Vapok/ConsoleBuddy/main/images/survivalservers_banner.png)](https://www.survivalservers.com/services/game_servers/valheim/?ref=vapok)
 
 </div>
 
