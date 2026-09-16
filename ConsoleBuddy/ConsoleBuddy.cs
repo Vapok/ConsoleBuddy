@@ -11,6 +11,7 @@ using Vapok.Common.Abstractions;
 using Vapok.Common.Managers;
 using Vapok.Common.Managers.Configuration;
 using Vapok.Common.Managers.LocalizationManager;
+using Vapok.Common.Managers.Splash;
 using Vapok.Common.Tools;
 
 namespace ConsoleBuddy
@@ -23,8 +24,8 @@ namespace ConsoleBuddy
     {
         //Module Constants
         private const string _pluginId = "vapok.mods.consolebuddy";
-        private const string _displayName = "Console Buddy";
-        private const string _version = "2.0.1";
+        private const string _displayName = "ConsoleBuddy";
+        private const string _version = "2.0.2";
         
         //Interface Properties
         public string PluginId => _pluginId;
@@ -74,6 +75,14 @@ namespace ConsoleBuddy
             //Patch Harmony
             _harmony = new Harmony(Info.Metadata.GUID);
             _harmony.PatchAll(Assembly.GetExecutingAssembly());
+
+            //Register Mod Splash Screen
+            ModSplashManager.Register(new ModSplashDossier(_instance)
+            {
+                Tagline = "Customizable in-game developer and debugging console visual styling and positioning.",
+                ShowOnStartup = ConfigRegistry.ShowSplashOnStartup,
+                EnableTelemetry = ConfigRegistry.EnableTelemetry,
+            });
 
             //???
 
