@@ -97,6 +97,18 @@ Tailor all visual settings in real time via the in-game [BepInEx Configuration M
 
 ---
 
+## 🔒 Anonymous Telemetry & Privacy
+
+Console Buddy includes lightweight, privacy-first anonymous telemetry to help monitor mod stability, diagnose unhandled errors, and understand active version adoption across game updates.
+
+* **100% Anonymous**: We never collect personal data, Steam IDs, IP addresses, character/world names, or file system paths. Stack traces from errors are automatically sanitized to strip local user directories.
+* **Full Player Control**: Telemetry is completely optional and can be enabled or disabled at any time:
+  * **In-Game (Startup Modal)**: Check or uncheck the **Enable Telemetry** toggle in the startup splash window.
+  * **In Configuration**: Set `Enable Anonymous Telemetry = false` under `[Local Config]` in `BepInEx/config/vapok.mods.consolebuddy.cfg` (or adjust it live via the BepInEx Configuration Manager).
+* **Privacy Policy**: Read our full data practices and commitment at [vapok.io/privacy-policy](https://vapok.io/privacy-policy/).
+
+---
+
 <div align="center">
 
 ### 👨‍💻 Created by Vapok Gaming
