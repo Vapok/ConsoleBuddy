@@ -1,3 +1,11 @@
+# 2.0.7 - Valheim 1.0.15 Alignment & Internalized Dependency Updates
+* **Valheim 1.0.15 Alignment**:
+  * Aligned publicized game assembly and UnityEngine references to Valheim 1.0.15.
+  * Updated internalized `Vapok.Valheim.Common` dependency to 3.13.1015.
+* **Stability & Localization**:
+  * Synchronized all 35 game localizations for splash screen and configuration registry.
+  * Audited in-game console hooks and terminal styling routines against game version 1.0.15.
+
 # 2.0.6 - Splash Window Updates & Valheim 1.0.14 Alignment
 * **Splash Window Updates**:
   * Updated telemetry default to unchecked on first launch (Opt-In).
