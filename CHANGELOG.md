@@ -1,6 +1,6 @@
 # 2.0.8 - Dedicated Server Bypass & Library Alignment
 * Disabled console styling on headless dedicated servers to save performance.
-* Updated internal libraries for better stability.
+* Updated Jotunn to 2.30.2 and internal dependencies for stability.
 
 <details>
 <summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
