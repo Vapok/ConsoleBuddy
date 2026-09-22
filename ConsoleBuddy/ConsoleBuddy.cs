@@ -4,6 +4,7 @@ using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using JetBrains.Annotations;
+using UnityEngine;
 using ConsoleBuddy.Configuration;
 using ConsoleBuddy.Features;
 using Jotunn.Managers;
@@ -25,7 +26,7 @@ namespace ConsoleBuddy
         //Module Constants
         private const string _pluginId = "vapok.mods.consolebuddy";
         private const string _displayName = "ConsoleBuddy";
-        private const string _version = "2.0.7";
+        private const string _version = "2.0.8";
         
         //Interface Properties
         public string PluginId => _pluginId;
@@ -51,14 +52,20 @@ namespace ConsoleBuddy
             //I'm awake!
             _instance = this;
             
+            //Register Logger
+            LogManager.Init(PluginId,out _log);
+
+            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
+            {
+                _log.Info("Headless dedicated server detected. ConsoleBuddy disabled.");
+                return;
+            }
+            
             //Waiting For Startup
             Waiter = new Waiting();
             
             //Jotunn Localization
             var localization = LocalizationManager.Instance.GetLocalization();
-
-            //Register Logger
-            LogManager.Init(PluginId,out _log);
             
             //Initialize Managers
             Initializer.LoadManagers(localization);

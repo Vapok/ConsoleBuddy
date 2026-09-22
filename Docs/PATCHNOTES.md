@@ -1,3 +1,10 @@
+# 2.0.8 - Dedicated Server Bypass & Library Alignment
+* **Dedicated Server Bypass**:
+  * In `ConsoleBuddy.cs`, added early return when `SystemInfo.graphicsDeviceType == GraphicsDeviceType.Null`, completely bypassing console UI patching on headless servers.
+* **Library Updates**:
+  * Synchronized `Vapok.Valheim.Common` to `3.17.1015`.
+  * Synchronized `JotunnLib` to `2.30.2`.
+
 # 2.0.7 - Valheim 1.0.15 Alignment & Internalized Dependency Updates
 * **Valheim 1.0.15 Alignment**:
   * Aligned publicized game assembly and UnityEngine references to Valheim 1.0.15.
