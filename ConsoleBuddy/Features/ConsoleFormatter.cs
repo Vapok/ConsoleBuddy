@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BepInEx.Configuration;
 using ConsoleBuddy.Configuration;
 using HarmonyLib;
+using Jotunn.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,7 +38,7 @@ public class ConsoleFormatter
         FontNameList = new List<string> { "Default Console Font" };
         try
         {
-            var osFonts = Font.GetOSInstalledFontNames();
+            string[] osFonts = Font.GetOSInstalledFontNames();
             if (osFonts != null)
             {
                 FontNameList.AddRange(osFonts.ToList());
@@ -67,7 +68,7 @@ public class ConsoleFormatter
 
         ConsoleFontColor.SettingChanged += (_, _) => ApplyAppearanceSettings();
 
-        var acceptableValues = new AcceptableValueList<string>(FontNameList.ToArray());
+        AcceptableValueList<string> acceptableValues = new AcceptableValueList<string>(FontNameList.ToArray());
 
         ConfigSyncBase.UnsyncedConfig("Console Appearance", "Font Name", "Default Console Font",
             new ConfigDescription("Selects Console Font",
@@ -127,7 +128,7 @@ public class ConsoleFormatter
             return;
         }
 
-        var fontIndex = FontNameList.IndexOf(ConsoleFontName.Value);
+        int fontIndex = FontNameList.IndexOf(ConsoleFontName.Value);
         if (fontIndex <= 0)
         {
             _configuredFont = _defaultFont;
@@ -136,11 +137,11 @@ public class ConsoleFormatter
 
         try
         {
-            var fontPaths = Font.GetPathsToOSFonts();
-            var pathIndex = fontIndex - 1;
+            string[] fontPaths = Font.GetPathsToOSFonts();
+            int pathIndex = fontIndex - 1;
             if (fontPaths != null && pathIndex >= 0 && pathIndex < fontPaths.Length)
             {
-                var fontType = new Font(fontPaths[pathIndex]);
+                Font fontType = new Font(fontPaths[pathIndex]);
                 _configuredFont = TMP_FontAsset.CreateFontAsset(fontType) ?? _defaultFont;
             }
             else
@@ -170,7 +171,7 @@ public class ConsoleFormatter
 
         if (_textComponent != null)
         {
-            var fontToUse = _configuredFont ?? _defaultFont;
+            TMP_FontAsset fontToUse = _configuredFont ?? _defaultFont;
             if (fontToUse != null)
             {
                 _textComponent.font = fontToUse;
@@ -203,8 +204,11 @@ public class ConsoleFormatter
     }
 
     [HarmonyPatch(typeof(Console), nameof(Console.Awake))]
-    public static class ConsoleAwakePatch
+    internal static class ConsoleAwakePatch
     {
+        [HarmonyPrepare]
+        private static bool Prepare() => !GUIManager.IsHeadless();
+
         [HarmonyPriority(Priority.First)]
         private static void Postfix(Console __instance)
         {
@@ -229,8 +233,11 @@ public class ConsoleFormatter
     }
 
     [HarmonyPatch(typeof(Terminal), nameof(Terminal.AddString), typeof(string))]
-    public static class TerminalAddStringPatch
+    internal static class TerminalAddStringPatch
     {
+        [HarmonyPrepare]
+        private static bool Prepare() => !GUIManager.IsHeadless();
+
         [HarmonyPrefix]
         private static bool Prefix(Terminal __instance, string text)
         {

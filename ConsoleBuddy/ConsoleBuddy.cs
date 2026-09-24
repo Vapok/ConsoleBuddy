@@ -55,7 +55,7 @@ namespace ConsoleBuddy
             //Register Logger
             LogManager.Init(PluginId,out _log);
 
-            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
+            if (GUIManager.IsHeadless())
             {
                 _log.Info("Headless dedicated server detected. ConsoleBuddy disabled.");
                 return;
@@ -65,7 +65,7 @@ namespace ConsoleBuddy
             Waiter = new Waiting();
             
             //Jotunn Localization
-            var localization = LocalizationManager.Instance.GetLocalization();
+            Jotunn.Entities.CustomLocalization localization = LocalizationManager.Instance.GetLocalization();
             
             //Initialize Managers
             Initializer.LoadManagers(localization);
