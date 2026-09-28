@@ -1,3 +1,8 @@
+# 2.0.9 - Dependency Updates & Stability
+* **Library Updates**:
+  * Internalized `Vapok.Valheim.Common` 3.22.1016.
+  * Updated game assembly references to 1.0.16.
+
 # 2.0.8 - Dedicated Server Bypass & Library Alignment
 * **Dedicated Server Bypass**:
   * In `ConsoleBuddy.cs` and `ConsoleFormatter.cs`, added early returns and `[HarmonyPrepare]` guards using `GUIManager.IsHeadless()`, bypassing console UI patching and styling on headless dedicated servers.
