@@ -10,8 +10,6 @@ namespace ConsoleBuddy.Configuration
     public class ConfigRegistry : ConfigSyncBase
     {
         //Configuration Entry Privates
-        internal static ConfigEntry<bool> ShowSplashOnStartup;
-        internal static ConfigEntry<bool> EnableTelemetry;
         
         public static Waiting Waiter;
 
@@ -29,13 +27,6 @@ namespace ConsoleBuddy.Configuration
                 return;
             
             //User Configs
-            UnsyncedConfig("Local Config", "Show Splash on Startup", true,
-                new ConfigDescription("If enabled, displays the mod overview and links splash screen on game startup.",
-                    null, new ConfigurationManagerAttributes { Order = 4 }), ref ShowSplashOnStartup);
-
-            UnsyncedConfig("Local Config", "Enable Anonymous Telemetry", true,
-                new ConfigDescription("If enabled, sends anonymous mod launch and heartbeat telemetry to help improve mod stability and track active versions.",
-                    null, new ConfigurationManagerAttributes { Order = 5 }), ref EnableTelemetry);
         }
     }
     

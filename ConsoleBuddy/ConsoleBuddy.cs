@@ -88,7 +88,6 @@ namespace ConsoleBuddy
             {
                 Tagline = "Customizable in-game developer and debugging console visual styling and positioning.",
                 ShowOnStartup = ConfigRegistry.ShowSplashOnStartup,
-                EnableTelemetry = ConfigRegistry.EnableTelemetry,
             });
 
             //???
