@@ -1,3 +1,6 @@
+# 2.0.10 - Compatibility Stability
+* **Compatibility Stability**: Updated dependencies for third party mod compatibilities.
+
 # 2.0.9 - Dependency Updates & Stability
 * **Library Updates**:
   * Internalized `Vapok.Valheim.Common` 3.22.1016.

@@ -1,8 +1,11 @@
-# 2.0.9 - Dependency Updates & Stability
-* Updated internal dependencies for stability.
+# 2.0.10 - Compatibility Stability
+* **Compatibility Stability**: Updated dependencies for third party mod compatibilities.
 
 <details>
 <summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
+
+### 2.0.9 - Dependency Updates & Stability
+* Updated internal dependencies for stability.
 
 ### 2.0.8 - Dedicated Server Bypass & Library Alignment
 * Disabled console styling on headless dedicated servers to save performance.
