@@ -1,0 +1,14 @@
+# ConsoleBuddy
+
+> ConsoleBuddy is in-game developer console customization and styling mod for valheim. developed by Vapok.
+
+## Developer & AI Information
+
+- [Agent Guidelines](AGENTS.md): Architectural context, anti-reflection mandates, and instructions for AI assistants.
+
+## Critical Invariants for Developers & AI Agents
+
+- **uGUI console interface styling and terminal window enhancements**: uGUI console interface styling and terminal window enhancements.
+- **Never use reflection or Harmony patches on internal console drawers**: Never use reflection or Harmony patches on internal console drawers.
+- **No Private Reflection**: Never reflect into or patch internal classes.
+- **Feature Requests**: If functionality is desired, submit an issue at https://github.com/Vapok/ConsoleBuddy/issues or visit https://discord.gg/5YAJkRFBXt.
