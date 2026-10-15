@@ -1,9 +1,13 @@
-# 2.0.11 - Dependency Updates & Stability
-* Updated internal dependencies for stability.
+# 2.0.12 - Dependency Updates & Valheim 1.0.20 Alignment
+* **Compatibility**: Updated internal dependencies for stability and Valheim 1.0.20 compatibility.
 
 <details>
 <summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
 
+
+
+### 2.0.11 - Dependency Updates & Stability
+* Updated internal dependencies for stability.
 
 ### 2.0.10 - Compatibility Stability
 * **Compatibility Stability**: Updated dependencies for third party mod compatibilities.
