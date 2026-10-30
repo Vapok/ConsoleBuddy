@@ -158,40 +158,47 @@ public class ConsoleFormatter
 
     public static void ApplyAppearanceSettings()
     {
-        if (_rect != null)
+        if (_rect != null && ConsoleBackgroundOffsetMaxXPos != null && ConsoleBackgroundOffsetMinXPos != null && ConsoleBackgroundOffsetMinYPos != null)
         {
             _rect.offsetMax = new Vector2(ConsoleBackgroundOffsetMaxXPos.Value, _rect.offsetMax.y);
             _rect.offsetMin = new Vector2(ConsoleBackgroundOffsetMinXPos.Value, ConsoleBackgroundOffsetMinYPos.Value);
         }
 
-        if (_image != null)
+        if (_image != null && ConsoleBackGroundColor != null)
         {
             _image.color = ConsoleBackGroundColor.Value;
         }
 
         if (_textComponent != null)
         {
-            TMP_FontAsset fontToUse = _configuredFont ?? _defaultFont;
+            TMP_FontAsset fontToUse = _configuredFont != null ? _configuredFont : _defaultFont;
             if (fontToUse != null)
             {
                 _textComponent.font = fontToUse;
             }
-            _textComponent.fontSize = ConsoleFontSize.Value;
-            _textComponent.color = ConsoleFontColor.Value;
+            if (ConsoleFontSize != null)
+            {
+                _textComponent.fontSize = ConsoleFontSize.Value;
+            }
+            if (ConsoleFontColor != null)
+            {
+                _textComponent.color = ConsoleFontColor.Value;
+            }
         }
     }
 
     public static void AddString(Terminal instance, string text)
     {
-        if (instance == null)
+        if (instance == null || instance.m_chatBuffer == null)
             return;
 
+        int bufferLimit = ConsoleBufferLimit != null ? ConsoleBufferLimit.Value : 3000;
         while (instance.m_maxVisibleBufferLength > 1)
         {
             try
             {
                 instance.m_chatBuffer.Add(text);
-                while (instance.m_chatBuffer.Count > ConsoleBufferLimit.Value)
+                while (instance.m_chatBuffer.Count > bufferLimit)
                     instance.m_chatBuffer.RemoveAt(0);
                 instance.UpdateChat();
                 break;
@@ -226,7 +233,10 @@ public class ConsoleFormatter
 
             UpdateFont();
 
-            __instance.m_maxVisibleBufferLength = ConsoleVisibleBufferLimit.Value;
+            if (ConsoleVisibleBufferLimit != null)
+            {
+                __instance.m_maxVisibleBufferLength = ConsoleVisibleBufferLimit.Value;
+            }
 
             ApplyAppearanceSettings();
         }
