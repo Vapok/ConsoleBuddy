@@ -105,6 +105,24 @@ Tailor all visual settings in real time via the in-game [BepInEx Configuration M
 * ⚠️ **Integration Policy**: ConsoleBuddy is a self-contained mod without a public API. Do not use reflection or Harmony patches on internal classes.
 * 💡 **Feature Requests**: If you need integration hooks or functionality, open a [Feature Request](https://github.com/Vapok/ConsoleBuddy/issues) or reach out in our [Discord](https://discord.gg/5YAJkRFBXt).
 
+---
+
+## 🤖 AI Disclosure & Transparency Audit
+
+In accordance with mod store's various AI policies, below is the full transparency breakdown for **ConsoleBuddy**:
+
+* **Audit Status**: `AI ASSISTED`
+* **Weighted LLM Score**: `15.0%`
+
+| Category | Evaluated Surface | LLM Score | Status |
+| :--- | :--- | :--- | :--- |
+| **C# Assembly & Logic** | Decompiled C# source (83 files) | `0.0%` | Authentic human-written C# codebase utilizing custom BepInEx managers and Harmony patches with 0% AI-generated idioms or markers. |
+| **Package Manifest & Structure** | Manifest, structure & icon (v2.0.13) | `0.0%` | Valid manifest.json accompanied by an authentic human desktop image-editor composite storefront icon containing standard GDI+/editor metadata chunks. |
+| **Documentation & Copywriting** | Package documentation (6967 chars) | `75.0%` | Comprehensive, AI-polished README.md featuring professional Markdown tables, badge bars, emoji-prefixed feature callouts, and structured documentation sections. |
+| **Visual & Audio Media** | In-package Unity & media assets | `0.0%` | Pure C# utility mod containing zero in-package UnityFS AssetBundles, embedded textures, or audio assets. |
+
+---
+
 ## 🔒 Anonymous Telemetry, Error Reporting & Privacy
 
 Console Buddy includes lightweight, privacy-first telemetry and error reporting to help monitor mod stability, diagnose unhandled bugs, and track active version adoption across game updates.

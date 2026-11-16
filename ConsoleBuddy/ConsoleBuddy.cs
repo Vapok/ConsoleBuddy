@@ -21,12 +21,12 @@ namespace ConsoleBuddy
     [BepInDependency(Jotunn.Main.ModGuid)]
     [BepInDependency("com.ValheimModding.YamlDotNetDetector")]
 
-    public class ConsoleBuddy : BaseUnityPlugin, IPluginInfo
+    public class ConsoleBuddy : VapokModBase, IPluginInfo
     {
         //Module Constants
         private const string _pluginId = "vapok.mods.consolebuddy";
         private const string _displayName = "ConsoleBuddy";
-        private const string _version = "2.0.12";
+        private const string _version = "2.0.13";
         
         //Interface Properties
         public string PluginId => _pluginId;

@@ -1,3 +1,11 @@
+# 2.0.13 - Valheim 1.0.21 Update & Console Startup Fix
+* **ConsoleFormatter Early-Awake Hardening (`CONSOLEBUDDY-1`)**:
+  * Added null guards on `ConsoleVisibleBufferLimit`, `ConsoleBufferLimit`, and appearance config entries in `ConsoleAwakePatch.Postfix`, `ApplyAppearanceSettings`, and `AddString`.
+* **Dependency & Engine Alignment**:
+  * Inherited `VapokModBase` to declare `[BepInIncompatibility("IAmOnTheInternetAndItIsScary.NoPopUpsInMyValheim")]`.
+  * Updated internalized dependency `Vapok.Valheim.Common` to 3.1021.2.
+  * Aligned game assembly references to Valheim 1.0.21 and BepInEx 5.4.2360.
+
 # 2.0.12 - Dependency Updates & Valheim 1.0.20 Alignment
 * **Dependency & Engine Alignment**:
   * Updated internalized dependency `Vapok.Valheim.Common` to 3.1020.1.
