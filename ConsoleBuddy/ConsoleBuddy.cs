@@ -26,7 +26,7 @@ namespace ConsoleBuddy
         //Module Constants
         private const string _pluginId = "vapok.mods.consolebuddy";
         private const string _displayName = "ConsoleBuddy";
-        private const string _version = "2.0.13";
+        private const string _version = "2.0.14";
         
         //Interface Properties
         public string PluginId => _pluginId;
