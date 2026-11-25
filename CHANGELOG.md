@@ -1,10 +1,13 @@
-# 2.0.13 - Valheim 1.0.21 Update & Console Startup Fix
-* **Console Startup**: Fixed an error that could happen if the console initialized before settings finished loading.
-* **Documentation**: Added AI transparency audit disclosure to README.
-* **Compatibility**: Updated dependencies for Valheim 1.0.21 and BepInEx 5.4.2360.
+# 2.0.14 - Valheim 1.0.30 Update & Dependency Alignment
+* **Compatibility**: Updated dependencies for Valheim 1.0.30 stability.
 
 <details>
 <summary><b>2.0 Changelog History (Valheim Release)</b> (<i>click to expand</i>)</summary>
+
+### 2.0.13 - Valheim 1.0.21 Update & Console Startup Fix
+* **Console Startup**: Fixed an error that could happen if the console initialized before settings finished loading.
+* **Documentation**: Added AI transparency audit disclosure to README.
+* **Compatibility**: Updated dependencies for Valheim 1.0.21 and BepInEx 5.4.2360.
 
 
 
